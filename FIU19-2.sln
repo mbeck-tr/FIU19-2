@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delegates", "Delegates\Delegates.csproj", "{F2E844F9-B657-4E10-824F-E6DE81FA9640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ereignisse", "Ereignisse\Ereignisse.csproj", "{0BBE23EF-DE2D-456A-9B79-5A40E7F8BB84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wiederholung", "Wiederholung", "{959E1655-8415-42D9-A9FA-163FAB948400}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2E844F9-B657-4E10-824F-E6DE81FA9640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E844F9-B657-4E10-824F-E6DE81FA9640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E844F9-B657-4E10-824F-E6DE81FA9640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E844F9-B657-4E10-824F-E6DE81FA9640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BBE23EF-DE2D-456A-9B79-5A40E7F8BB84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BBE23EF-DE2D-456A-9B79-5A40E7F8BB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BBE23EF-DE2D-456A-9B79-5A40E7F8BB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BBE23EF-DE2D-456A-9B79-5A40E7F8BB84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2E844F9-B657-4E10-824F-E6DE81FA9640} = {959E1655-8415-42D9-A9FA-163FAB948400}
+		{0BBE23EF-DE2D-456A-9B79-5A40E7F8BB84} = {959E1655-8415-42D9-A9FA-163FAB948400}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD317B9B-6CAC-4741-BB72-3F27B484BBF7}
+	EndGlobalSection
+EndGlobal
