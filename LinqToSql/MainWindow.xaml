@@ -10,9 +10,13 @@
         >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="125"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
         <!-- TODO: IsSynchronizedWithCurrentItem-->
         <ListView Grid.Column="0" Name="lvDepartment" IsSynchronizedWithCurrentItem="True"
                   ItemsSource="{Binding}" SelectionChanged="lvDepartment_SelectionChanged"
@@ -20,7 +24,7 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="DepartmentID" DisplayMemberBinding="{Binding DepartmentID}"/>
+                        <GridViewColumn Header="Department Name" DisplayMemberBinding="{Binding Name}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
@@ -30,10 +34,18 @@
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Header="DepartmentId" DisplayMemberBinding="{Binding DepartmentId}"/>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Employees.LastName}"/>
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
+                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}"/>
+                        <GridViewColumn Header="Gender" DisplayMemberBinding="{Binding Gender}"/>
+                        <GridViewColumn Header="Salary" DisplayMemberBinding="{Binding Salary}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
+            <Button x:Name="btnInsert" Click="btnInsert_Click" Margin="10,2" Content="Insert" Width="125"/>
+            <Button x:Name="btnUpdate" Click="btnUpdate_Click" Margin="10,2" Content="Update" Width="125"/>
+            <Button x:Name="btnDelete" Click="btnDelete_Click" Margin="10,2" Content="Delete" Width="125"/>
+        </StackPanel>
     </Grid>
 </Window>
