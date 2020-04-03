@@ -46,6 +46,7 @@
             <Button x:Name="btnInsert" Click="btnInsert_Click" Margin="10,2" Content="Insert" Width="125"/>
             <Button x:Name="btnUpdate" Click="btnUpdate_Click" Margin="10,2" Content="Update" Width="125"/>
             <Button x:Name="btnDelete" Click="btnDelete_Click" Margin="10,2" Content="Delete" Width="125"/>
+            <Button x:Name="btnShowDataGrid" Click="btnShowDataGrid_Click" Margin="10,2" Content="DataGrid" Width="125"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -1,0 +1,19 @@
+﻿<Window x:Class="LinqToSql.ShowDataGrid"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LinqToSql"
+        mc:Ignorable="d"
+        Title="ShowDataGrid" Height="450" Width="800">
+    <Grid>
+        <DataGrid Name="Daten" AutoGenerateColumns="False" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Vorname" x:Name="colFirstname" Binding="{Binding Path=FirstName}"/>
+                <DataGridTextColumn Header="Nachname" x:Name="colLastname" Binding="{Binding Path=LastName}"/>
+                <DataGridTextColumn Header="Abteilung" x:Name="colDepartment" Binding="{Binding Path=Departments.Name}"/>
+                <DataGridCheckBoxColumn Header="im Dienst" x:Name="colIsActive" Binding="{Binding Path=IsActive}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

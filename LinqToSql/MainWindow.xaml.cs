@@ -79,5 +79,11 @@ namespace LinqToSql
             view0 = CollectionViewSource.GetDefaultView(lvDepartment.DataContext);
             lvEmployees.DataContext = (view0.CurrentItem as Departments).Employees;
         }
+
+        private void btnShowDataGrid_Click(object sender, RoutedEventArgs e)
+        {
+            ShowDataGrid datenFenster = new ShowDataGrid();
+            datenFenster.ShowDialog();
+        }
     }
 }

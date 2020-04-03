@@ -103,6 +103,8 @@ namespace LinqToSql
 		
 		private System.Nullable<int> _DepartmentId;
 		
+		private System.Nullable<bool> _IsActive;
+		
 		private EntityRef<Departments> _Departments;
 		
     #region Definitionen der Erweiterungsmethoden
@@ -121,6 +123,8 @@ namespace LinqToSql
     partial void OnSalaryChanged();
     partial void OnDepartmentIdChanging(System.Nullable<int> value);
     partial void OnDepartmentIdChanged();
+    partial void OnIsActiveChanging(System.Nullable<bool> value);
+    partial void OnIsActiveChanged();
     #endregion
 		
 		public Employees()
@@ -249,6 +253,26 @@ namespace LinqToSql
 					this._DepartmentId = value;
 					this.SendPropertyChanged("DepartmentId");
 					this.OnDepartmentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit")]
+		public System.Nullable<bool> IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
 				}
 			}
 		}
