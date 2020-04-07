@@ -34,12 +34,18 @@ namespace ThemaThreads
             
             //Instanziierung des Threadobjekts mit Übergabe des Delegaten
             Thread myThread = new Thread(threadDel);
+            myThread.Name = "Thread 1";
 
             //Starten des neuen Ablaufstranges
             myThread.Start();
+            Debug.WriteLine($"{myThread.Name} Start aufgerufen!");
 
+            //2. Thread
+            Thread my2ndThread = new Thread(Berechne); // Nur Angabe der Methode reicht!
+            my2ndThread.Name = "Thread 2";
+            my2ndThread.Start();
+            Debug.WriteLine($"{my2ndThread.Name} Start aufgerufen!");
 
-            Debug.WriteLine("Thread Start aufgerufen!");
             Debug.WriteLine("btnStart_Click Methode beendet, Mainthread wartet auf Events!");
         }
 
@@ -50,7 +56,7 @@ namespace ThemaThreads
             for (int i = 0; i < 10; i++)
             {
                 Thread.Sleep(500); // statische Methode Sleep, welche den aktuellen Thread für angegebene Millisekunden anhält
-                Debug.WriteLine("Programm arbeitet {0}", i);
+                Debug.WriteLine("{1} arbeitet {0}", i, Thread.CurrentThread.Name);
             }
             sw.Stop();
             Debug.WriteLine("Zeit: " + sw.ElapsedMilliseconds / 1000.0);
