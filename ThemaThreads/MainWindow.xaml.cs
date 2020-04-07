@@ -70,14 +70,6 @@ namespace ThemaThreads
 
         //Feld
         bool fertig = false; //Shared Variable, auch als static!
-
-        private void TueWas()
-        {
-            int a = 10; //local Variable
-            if (a == 10) { a++; Debug.WriteLine("a: " + a + "\t" + Thread.CurrentThread.ManagedThreadId); }
-            if (!fertig) { fertig = true; Debug.WriteLine("Fertig! {0}", Thread.CurrentThread.ManagedThreadId); }
-        }
-
         private void btnSharedVariable_Click(object sender, RoutedEventArgs e)
         {
             //Variablen
@@ -85,6 +77,36 @@ namespace ThemaThreads
             Thread tuewas2 = new Thread(TueWas);
             tuewas1.Start();
             tuewas2.Start();
+        }
+        private void TueWas()
+        {
+            int a = 10; //local Variable
+            if (a == 10) { a++; Debug.WriteLine("a: " + a + "\t" + Thread.CurrentThread.ManagedThreadId); }
+            if (!fertig) { fertig = true; Debug.WriteLine("Fertig! {0}", Thread.CurrentThread.ManagedThreadId); }
+        }
+
+        private void btnThreadPool_Click(object sender, RoutedEventArgs e)
+        {
+            int n2, n3;
+            ThreadPool.GetMaxThreads(out n3, out n2);
+            for (int i = 0; i < (n3 + 10); i++)
+            {
+                ThreadPool.QueueUserWorkItem(GrosseMenge, i); // ThreadPool-Threads sind immer Backgroundthreads
+                Debug.WriteLine($"Thread_{i} in Warteschlange aufgenommen");
+            }
+        }
+
+        private void GrosseMenge(object obj)
+        {
+            int n1, n2, n3;
+            Debug.WriteLine($"-> Thread {(int)obj} gestartet");
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(100);
+            }
+            ThreadPool.GetMaxThreads(out n3, out n2);
+            ThreadPool.GetAvailableThreads(out n1, out n2);
+            Debug.WriteLine($" <- Thread {(int)obj} beendet! (frei {n1 + 1} von {n3})");
         }
     }
 }

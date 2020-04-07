@@ -22,6 +22,11 @@
                     Click="btnSharedVariable_Click" 
                     Width="75" 
                     Margin="5"/>
+            <Button x:Name="btnThreadPool" 
+                    Content="ThreadPool" 
+                    Click="btnThreadPool_Click" 
+                    Width="75" 
+                    Margin="5"/>
         </StackPanel>
     </Grid>
 </Window>
