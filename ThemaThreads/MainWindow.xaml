@@ -12,7 +12,16 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button x:Name="btnStart" Content="Start" Click="btnStart_Click" Width="75" Margin="5"/>
+            <Button x:Name="btnStart" 
+                    Content="Start" 
+                    Click="btnStart_Click" 
+                    Width="75" 
+                    Margin="5"/>
+            <Button x:Name="btnSharedVariable" 
+                    Content="Shared?" 
+                    Click="btnSharedVariable_Click" 
+                    Width="75" 
+                    Margin="5"/>
         </StackPanel>
     </Grid>
 </Window>

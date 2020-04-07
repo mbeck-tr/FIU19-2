@@ -67,5 +67,24 @@ namespace ThemaThreads
             sw.Stop();
             Debug.WriteLine("Zeit: " + sw.ElapsedMilliseconds / 1000.0);
         }
+
+        //Feld
+        bool fertig = false; //Shared Variable, auch als static!
+
+        private void TueWas()
+        {
+            int a = 10; //local Variable
+            if (a == 10) { a++; Debug.WriteLine("a: " + a + "\t" + Thread.CurrentThread.ManagedThreadId); }
+            if (!fertig) { fertig = true; Debug.WriteLine("Fertig! {0}", Thread.CurrentThread.ManagedThreadId); }
+        }
+
+        private void btnSharedVariable_Click(object sender, RoutedEventArgs e)
+        {
+            //Variablen
+            Thread tuewas1 = new Thread(TueWas);
+            Thread tuewas2 = new Thread(TueWas);
+            tuewas1.Start();
+            tuewas2.Start();
+        }
     }
 }
