@@ -32,6 +32,12 @@
                     Click="btnThreadSafty_Click"
                     Width="75"
                     Margin="5"/>
+            <Button x:Name="btnUpdateControl"
+                    Content="Update"
+                    Click="btnUpdateControl_Click"
+                    Width="75"
+                    Margin="5"/>
         </StackPanel>
+        <ListBox Grid.Row="1" x:Name="lbCustomers"></ListBox>
     </Grid>
 </Window>

@@ -130,5 +130,39 @@ namespace ThemaThreads
                 }
             }
         }
+
+        private void btnUpdateControl_Click(object sender, RoutedEventArgs e)
+        {
+            Thread t = new Thread(LoadCustomers);
+            t.Start();
+        }
+
+        private void LoadCustomers()
+        {
+            List<string> list = new List<string>();
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(500);
+                list.Add($"Customer Nr. {i + 1}");
+                lbCustomers.Dispatcher.Invoke(new UpdateUIDelegateItem(UpdateListBoxAddItem), new object[] { $"Customer Nr. {i + 1}" });
+                //lbCustomers.Items.Add($"Customer Nr. {i + 1}"); //Fehler: Zugriff auf UIElement aus anderem Thread
+            }
+            //this.Dispatcher.Invoke(() => lbCustomers.Items.Add("Michael") ); //Lambda Expression als Action-Delegate
+            this.Dispatcher.Invoke(new UpdateUIDelegateList(UpdateListBoxItemSource), new object[] { list });
+        }
+
+        delegate void UpdateUIDelegateList(List<string> list);
+        delegate void UpdateUIDelegateItem(string c);
+        private void UpdateListBoxItemSource(List<string> liste)
+        {
+            lbCustomers.Items.Clear();
+            lbCustomers.ItemsSource = liste;
+        }
+
+        private void UpdateListBoxAddItem(string customer)
+        {
+            lbCustomers.Items.Add(customer);
+        }
+
     }
 }
