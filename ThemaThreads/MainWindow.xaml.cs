@@ -85,6 +85,7 @@ namespace ThemaThreads
             if (!fertig) { fertig = true; Debug.WriteLine("Fertig! {0}", Thread.CurrentThread.ManagedThreadId); }
         }
 
+
         private void btnThreadPool_Click(object sender, RoutedEventArgs e)
         {
             int n2, n3;
@@ -107,6 +108,27 @@ namespace ThemaThreads
             ThreadPool.GetMaxThreads(out n3, out n2);
             ThreadPool.GetAvailableThreads(out n1, out n2);
             Debug.WriteLine($" <- Thread {(int)obj} beendet! (frei {n1 + 1} von {n3})");
+        }
+
+        private void btnThreadSafty_Click(object sender, RoutedEventArgs e)
+        {
+            Thread t1 = new Thread(TueWasThreadSafty);
+            Thread t2 = new Thread(TueWasThreadSafty);
+            t1.Start();
+            t2.Start();
+        }
+
+        bool done = false;
+        static readonly object locker = new object();
+        private void TueWasThreadSafty()
+        {
+            lock (locker)
+            {
+                if (!done) {
+                    Debug.WriteLine("Done! {0}", Thread.CurrentThread.ManagedThreadId); 
+                    done = true;
+                }
+            }
         }
     }
 }

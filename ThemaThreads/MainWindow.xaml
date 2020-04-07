@@ -27,6 +27,11 @@
                     Click="btnThreadPool_Click" 
                     Width="75" 
                     Margin="5"/>
+            <Button x:Name="btnThreadSafty"
+                    Content="ThreadSafty"
+                    Click="btnThreadSafty_Click"
+                    Width="75"
+                    Margin="5"/>
         </StackPanel>
     </Grid>
 </Window>
