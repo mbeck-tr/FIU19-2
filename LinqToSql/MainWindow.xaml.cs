@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -84,6 +86,27 @@ namespace LinqToSql
         {
             ShowDataGrid datenFenster = new ShowDataGrid();
             datenFenster.ShowDialog();
+        }
+
+        private void btnCSV_Click(object sender, RoutedEventArgs e)
+        {
+            Thread t = new Thread(SaveToCSV);
+            //t.IsBackground = true;
+            t.Start();
+        }
+
+        object obj = new object();
+        private void SaveToCSV()
+        {
+            string CSVText = "";
+            lock (obj)
+            {
+                foreach (Employees emp in db.Employees)
+                {
+                    CSVText += $"{emp.ID},{emp.FirstName},{emp.LastName},{emp.Gender}" + Environment.NewLine;
+                }
+            }
+            File.WriteAllText("employee.csv", CSVText);
         }
     }
 }

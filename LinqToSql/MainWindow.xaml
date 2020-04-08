@@ -47,6 +47,7 @@
             <Button x:Name="btnUpdate" Click="btnUpdate_Click" Margin="10,2" Content="Update" Width="125"/>
             <Button x:Name="btnDelete" Click="btnDelete_Click" Margin="10,2" Content="Delete" Width="125"/>
             <Button x:Name="btnShowDataGrid" Click="btnShowDataGrid_Click" Margin="10,2" Content="DataGrid" Width="125"/>
+            <Button x:Name="btnCSV" Click="btnCSV_Click" Margin="10,2" Content="Save To CSV" Width="125"/>
         </StackPanel>
     </Grid>
 </Window>
