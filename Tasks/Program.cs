@@ -27,6 +27,7 @@ namespace Tasks
             //t4.Wait(); //Bei Zugriff auf Result-Property wird auf das Beenden des Tasks gewartet! Somit ist Wait() nicht notwendig
             Console.WriteLine("Ergebnis ist: " + t4.Result);
 
+            goto weiter; // nur Demonstration
             Task<int> t5 = Task.Run(Berechne);
             Console.WriteLine("t5 Ergebnis: " + t5.Result);
 
@@ -48,7 +49,39 @@ namespace Tasks
                 Console.WriteLine("Exception aufgetreten!! (nicht im Task)");
             }
 
+            weiter: //Goto Sprungmarke (nur zur Demonstration!!!)
+            // Methoden mit Übergabeparameter in neuem Task aufrufen
+            Task<int> t7 = Task.Factory.StartNew(BerechneSinn, 13);
+            Console.WriteLine("t7: " + t7.Result);
+
+            Task<int> t8 = Task.Run(() => { return BerechneMitIntUebergabe(100); });
+            Console.WriteLine("t8: " + t8.Result);
+
+            Task t9 = Task.Run(() => MethodeMitVielenParametern(12, 2.3, "Hallo", 'c'));
+
+            //Task abbrechen
+            cts = new CancellationTokenSource(); //Instanz erstellen
+            Task t10 = Task.Factory.StartNew(SchreibeX, cts.Token);
+
+            Thread.Sleep(1500);
+            cts.Cancel();
+
             Console.ReadLine();
+        }
+
+        static CancellationTokenSource cts; //Tokenquelle für das Handling des vorzeitigen Abbruchs
+
+        static private void SchreibeX()
+        {
+            while (true)
+            {
+                Console.Write("X");
+                if (cts.Token.IsCancellationRequested)
+                {
+                    Console.WriteLine("Abbruch!");
+                    return;
+                }
+            }
         }
 
         static private int Berechne()
@@ -62,6 +95,22 @@ namespace Tasks
             //Thread.Sleep(1000);
             throw null;
             return 42;
+        }
+
+        static private int BerechneSinn(object wert)
+        {
+            int a = (int)wert;
+            return a / a * 42;
+        }
+
+        static private int BerechneMitIntUebergabe(int i)
+        {
+            return i * i;
+        }
+
+        static private void MethodeMitVielenParametern(int i, double d, string s, char c)
+        {
+            //Anweisungen
         }
     }
 }
