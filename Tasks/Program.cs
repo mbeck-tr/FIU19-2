@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -65,6 +66,31 @@ namespace Tasks
 
             Thread.Sleep(1500);
             cts.Cancel();
+
+            //Continuations
+            //Nach Fertigstellung eines Task, eine weitere Aufgabe ausführen
+            // 1. Möglichkeit
+            Console.WriteLine("Starte t11");
+            Task<int> t11 = Task.Run(() => { Thread.Sleep(2000); return 42; });
+            
+            TaskAwaiter<int> awaiter = t11.GetAwaiter();
+            awaiter.OnCompleted(() =>
+            {
+                int ergebnis = awaiter.GetResult();
+                Console.WriteLine("Ergebnis von t11: " + ergebnis);
+            });
+            Console.WriteLine("Nach Aufruf der OnCompleted-Methode.");
+
+            //2. Möglichkeit
+            Console.WriteLine("Starte t12");
+            Task<int> t12 = Task.Run(() => { Thread.Sleep(2000); return 42; });
+            t12.ContinueWith(vorrigerTask =>
+            {
+                int ergebnis = vorrigerTask.Result;
+                Console.WriteLine("Ergebnis von t12: {0}", ergebnis);
+            });
+            Console.WriteLine("Nach Aufruf der ContinueWith-Methode");
+
 
             Console.ReadLine();
         }
