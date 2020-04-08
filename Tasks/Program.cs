@@ -28,10 +28,10 @@ namespace Tasks
             //t4.Wait(); //Bei Zugriff auf Result-Property wird auf das Beenden des Tasks gewartet! Somit ist Wait() nicht notwendig
             Console.WriteLine("Ergebnis ist: " + t4.Result);
 
-            goto weiter; // nur Demonstration
-            Task<int> t5 = Task.Run(Berechne);
+            Task<int> t5 = Task.Run<int>(Berechne);
             Console.WriteLine("t5 Ergebnis: " + t5.Result);
 
+            goto weiter; // nur Demonstration
             //Ausnahme im Task abfangen
             Task<int> t6 = Task.Run(MethodeMitException);
             try
@@ -91,8 +91,38 @@ namespace Tasks
             });
             Console.WriteLine("Nach Aufruf der ContinueWith-Methode");
 
+            //Erzeugen eines Task aus einem Abhandlungstrangs
+            var tcs = new TaskCompletionSource<int>();
+            new Thread(() => { Thread.Sleep(2000); tcs.SetResult(42); }) { IsBackground = true }.Start();
+
+            Task<int> t13 = tcs.Task;
+            Console.WriteLine("Ergebnis von t13: " + t13.Result);
+
+            Task<int> t14 = Run<int>(() => { Thread.Sleep(1000); return 42; });
+
+            Console.WriteLine("Starten des Delays");
+            Task.Delay(5000).GetAwaiter().OnCompleted(() => Console.WriteLine("5 Sekunden abgelaufen!!!!"));
+            Console.WriteLine("Ende des Delays");
+            Task.Delay(1000).ContinueWith(delay => Console.WriteLine("1 Sekunde abgelaufen"));
 
             Console.ReadLine();
+        }
+        //TaskCompletionSource nutzen, um eigen Run-Methode zu erstellen
+        static private Task<TResult> Run<TResult> (Func<TResult> function)
+        {
+            var tcs = new TaskCompletionSource<TResult>();
+            new Thread(() =>
+            {
+               try
+               {
+                   tcs.SetResult(function());
+               }
+               catch (Exception ex)
+               {
+                   tcs.SetException(ex);
+               }
+            }).Start();
+            return tcs.Task;
         }
 
         static CancellationTokenSource cts; //Tokenquelle für das Handling des vorzeitigen Abbruchs
@@ -102,6 +132,7 @@ namespace Tasks
             while (true)
             {
                 Console.Write("X");
+                // Wenn Exception bei Abbruchanfrage geworfen werden soll,  cts.Token.ThrowIfCancellationRequested
                 if (cts.Token.IsCancellationRequested)
                 {
                     Console.WriteLine("Abbruch!");
