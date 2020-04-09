@@ -11,8 +11,9 @@ namespace AsynchronousMethods
     {
         static void Main(string[] args)
         {
-            DisplayPrimeCounts();
-            Console.WriteLine("Nach Aufruf von DisplayMethode");
+            //DisplayPrimeCounts();
+            DisplayPrimeCountsTo2(2000000);
+            Console.WriteLine("Nach Aufruf von Display-Methode");
             Console.ReadLine();
         }
 
@@ -27,6 +28,22 @@ namespace AsynchronousMethods
                 });
             }
             Console.WriteLine("fertig!");
+        }
+
+        static async void DispalyPrimeCountsTo(int count) // async kennzeichnet die Methode, dass await verwendet wird
+        {
+            int ergebnis = await GetPrimesCountAsync(2, count);// await entkapselt den Task<int> auf Task.Result und übergibt an int ergebnis
+            Console.WriteLine("Fertig mit dem Zählen, Ergebnis: "+ ergebnis);
+        }
+
+        static async void DisplayPrimeCountsTo2(int count)
+        {
+            Task<int> t1 = GetPrimesCountAsync(2, count);
+            Task<int> t2 = GetPrimesCountAsync(count, 10000000);
+            Console.WriteLine("Tasks sind gestartet!!!");
+            int ergebnis = await t1;
+            Console.WriteLine("Ergebnis Task1: " + ergebnis);
+            Console.WriteLine("Ergebnis Task2: " + await t2);
         }
 
         //TODO: muss ich noch machen {Aufgabenliste}
