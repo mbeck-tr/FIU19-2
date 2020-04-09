@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks", "Tasks\Tasks.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousMethods", "AsynchronousMethods\AsynchronousMethods.csproj", "{3FDE1768-2668-441B-A718-AABD8748C7DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousFunctionsInWPF", "AsynchronousFunctionsInWPF\AsynchronousFunctionsInWPF.csproj", "{456C38F9-D170-44EF-BB8F-74C6A1D4955D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{3FDE1768-2668-441B-A718-AABD8748C7DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FDE1768-2668-441B-A718-AABD8748C7DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FDE1768-2668-441B-A718-AABD8748C7DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456C38F9-D170-44EF-BB8F-74C6A1D4955D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456C38F9-D170-44EF-BB8F-74C6A1D4955D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456C38F9-D170-44EF-BB8F-74C6A1D4955D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456C38F9-D170-44EF-BB8F-74C6A1D4955D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{3F56A8CF-C899-477E-AA36-6DEDCFED1BE7} = {A6D74121-EC54-47C3-BFD6-2A6878AA1415}
 		{076E7B17-A0AE-4339-A7A5-B1C159764ADC} = {A6D74121-EC54-47C3-BFD6-2A6878AA1415}
 		{3FDE1768-2668-441B-A718-AABD8748C7DA} = {A6D74121-EC54-47C3-BFD6-2A6878AA1415}
+		{456C38F9-D170-44EF-BB8F-74C6A1D4955D} = {A6D74121-EC54-47C3-BFD6-2A6878AA1415}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD317B9B-6CAC-4741-BB72-3F27B484BBF7}
