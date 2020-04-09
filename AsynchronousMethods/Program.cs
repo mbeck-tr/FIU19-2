@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,33 +20,38 @@ namespace AsynchronousMethods
         {
             for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine(
-                    GetPrimesCount(i*1000000,1000000) + 
-                    " Primzahlen zwischen " + (i*1000000) + " und " + ((i+1)*1000000-1));
+                TaskAwaiter<int> awaiter = GetPrimesCountAsync(i * 1000000, 1000000).GetAwaiter();
+                awaiter.OnCompleted(() =>
+                {
+                    Console.WriteLine(awaiter.GetResult() + " Primzahlen zwischen ...");
+                });
             }
             Console.WriteLine("fertig!");
         }
 
-
-        static int GetPrimesCount(int start, int count)
+        //TODO: muss ich noch machen {Aufgabenliste}
+        static Task<int> GetPrimesCountAsync(int start, int count)
         {
-            int primes = 0;
-            bool isPrime;
-            for(int i = start; i < start + count; i++)
+            return Task.Run(() =>
             {
-                isPrime = true;
-                for(int j = 2; j*j <= i; j++)
+                int primes = 0;
+                bool isPrime;
+                for (int i = start; i < start + count; i++)
                 {
-                    if (i % j == 0)
+                    isPrime = true;
+                    for (int j = 2; j * j <= i; j++)
                     {
-                        isPrime = false;
-                        break;
+                        if (i % j == 0)
+                        {
+                            isPrime = false;
+                            break;
+                        }
                     }
+                    if (isPrime)
+                        primes++;
                 }
-                if (isPrime)
-                    primes++;
-            }
-            return primes;
+                return primes;
+            });
         }
     }
 }
