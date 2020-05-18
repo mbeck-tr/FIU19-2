@@ -162,7 +162,7 @@ var ar = [1,2,3,4,5,6,7,8,9,10]; console.log(ar.filter(IsEven));
 
 console.log(ar.filter(function (v,i,a){return v % 2 != 0}));
 
-console.log(ar.filter((v,i,a) => {return v % 3 == 0}));
+console.log(ar.filter((v) => {return v % 3 == 0}));
 
 
 var names = ["Sam","Mark","Tim","Sam","Tim"];
