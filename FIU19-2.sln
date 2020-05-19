@@ -36,6 +36,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousFunctionsInWPF"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelKlasse", "ParallelKlasse\ParallelKlasse.csproj", "{BEAA5E76-3B0B-443F-999E-50335723821A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JavaScriptÜbungen", "JavaScriptÜbungen", "{ACE13FEE-2BF2-4336-9AAC-B996EE9EECE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCalculator", "WebCalculator\WebCalculator.csproj", "{8486815B-748C-4C7B-850D-5FE8E8EE8D30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +86,10 @@ Global
 		{BEAA5E76-3B0B-443F-999E-50335723821A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEAA5E76-3B0B-443F-999E-50335723821A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEAA5E76-3B0B-443F-999E-50335723821A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8486815B-748C-4C7B-850D-5FE8E8EE8D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8486815B-748C-4C7B-850D-5FE8E8EE8D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8486815B-748C-4C7B-850D-5FE8E8EE8D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8486815B-748C-4C7B-850D-5FE8E8EE8D30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +107,7 @@ Global
 		{3FDE1768-2668-441B-A718-AABD8748C7DA} = {A6D74121-EC54-47C3-BFD6-2A6878AA1415}
 		{456C38F9-D170-44EF-BB8F-74C6A1D4955D} = {A6D74121-EC54-47C3-BFD6-2A6878AA1415}
 		{BEAA5E76-3B0B-443F-999E-50335723821A} = {A6D74121-EC54-47C3-BFD6-2A6878AA1415}
+		{8486815B-748C-4C7B-850D-5FE8E8EE8D30} = {ACE13FEE-2BF2-4336-9AAC-B996EE9EECE0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD317B9B-6CAC-4741-BB72-3F27B484BBF7}
