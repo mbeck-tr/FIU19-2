@@ -1,0 +1,13 @@
+{
+    "name": "expresswebserver",
+    "version": "0.0.0",
+    "description": "A simple web server with express",
+    "main": "main.js",
+    "author": {
+        "name": "mbeck@lutzundgrub.de"
+    },
+    "private": true,
+    "dependencies": {
+        "express": "4.17.1"
+    }
+}
