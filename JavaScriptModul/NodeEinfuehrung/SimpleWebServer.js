@@ -16,11 +16,16 @@ Response
 */
 
 var http = require('http');
+var url = require('url');
+
+
 var server = http.createServer(function (request, response){
+    var urlParts = url.parse(request.url, true);
     response.writeHead(200,{"Content-Type":"text/plain"});
-    response.write("Hallo FIU 19/2 von Node js!");
+    response.write("Hallo " + urlParts.query.name + " von Node js!");
     response.end("viel Spass beim coden :-)");
-    console.log("Handled request");
+    //console.log(request.url);
+    console.log("Handled request from " + urlParts.query.name);
 });
 //server.listen(8000,"localhost");
 var port = 8000;
