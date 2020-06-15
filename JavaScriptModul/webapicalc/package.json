@@ -1,0 +1,14 @@
+{
+    "name": "webapicalc",
+    "version": "0.0.0",
+    "description": "A simple web service",
+    "main": "index.js",
+    "author": {
+        "name": "mbeck"
+    },
+    "private": true,
+    "dependencies": {
+        "express": "4.17.1",
+        "formidable": "1.2.2"
+    }
+}
