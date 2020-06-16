@@ -1,5 +1,6 @@
 var wsUri = 'ws://echo.websocket.org/';
 var webSocket;
+var timerId = 0;
 
 $(document).ready(
     function(){
@@ -48,10 +49,12 @@ function onError(evt){
 
 function onClose(evt){
     writeOutput("DISCONNECTED");
+    cancelKeepAlive();
 }
 
 function onOpen(evt){
     writeOutput("CONNECTED");
+    keepAlive();
 }
 
 function Send(){
@@ -62,4 +65,19 @@ function Send(){
     }
     writeOutput("SENT: " + m);
     webSocket.send(m);
+}
+
+function keepAlive(){
+    var timeout = 15000;
+    if (webSocket.readyState == webSocket.OPEN){
+        webSocket.send('');
+        console.log("sent keep alive signal");
+    }
+    timerId = setTimeout(keepAlive, timeout);
+}
+
+function cancelKeepAlive(){
+    if (timerId){
+        cancelTimeout(timerId);
+    }
 }
