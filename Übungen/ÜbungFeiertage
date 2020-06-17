@@ -10,3 +10,8 @@
 
 + Javascriptdatei als Nebenthreads
     - Berechnen des/r Feiertag/e
+
++ Ausgabe wie folgt
+
+    25.12.2019 1. Weihnachtsfeiertag
+    ...
